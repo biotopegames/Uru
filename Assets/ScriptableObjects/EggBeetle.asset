@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a201fddaa83785743bbb61778caf3716, type: 3}
+  m_Name: EggBeetle
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 447926454, guid: 76a894fc65473094dbaa4bdb2dc5e5ba, type: 3}
+  itemName: Egg
+  itemType: 4
+  itemInfo: A strange egg of some sort...
+  healAmount: 0
+  damage: 0
+  defense: 0
+  attackSpeed: 0
+  hpRegeneration: 0
+  companionHatchling: {fileID: 1692291330326443950, guid: 5daf884453e7272468ee63405a4ab7ea, type: 3}

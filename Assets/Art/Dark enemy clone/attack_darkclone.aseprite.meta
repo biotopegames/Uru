@@ -1,0 +1,554 @@
+fileFormatVersion: 2
+guid: eb7ef8865cbbc414a8ae0ea2a195e46a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: attack_darkclone_Frame_0
+    originalName: 
+    pivot: {x: 0.53846157, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 132
+      width: 26
+      height: 23
+    spriteID: f7a97ee8efc20ac42934e5d81d19b35b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 132}
+  - name: attack_darkclone_Frame_6
+    originalName: 
+    pivot: {x: 0.114754096, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 61
+      height: 20
+    spriteID: 236289ac68de0de45ae8b04ee6a40423
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+  - name: attack_darkclone_Frame_7
+    originalName: 
+    pivot: {x: 0.12280702, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 104
+      width: 57
+      height: 20
+    spriteID: 3692d90f7341a304094ca21d3c8a6512
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 104}
+  - name: attack_darkclone_Frame_8
+    originalName: 
+    pivot: {x: 0.35, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 192
+      width: 20
+      height: 20
+    spriteID: 27188cb52c901874cae0decc6bd8ef39
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 192}
+  - name: attack_darkclone_Frame_9
+    originalName: 
+    pivot: {x: 0.36842105, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 161
+      width: 19
+      height: 20
+    spriteID: cb09047f0ee4ee54e8589fe743b6001d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 161}
+  - name: attack_darkclone_Frame_10
+    originalName: 
+    pivot: {x: 0.47619048, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 163
+      width: 21
+      height: 21
+    spriteID: c997ba834b6ff7748897a3c19b988683
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 163}
+  - name: attack_darkclone_Frame_1
+    originalName: 
+    pivot: {x: 0.2173913, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 47
+      width: 69
+      height: 21
+    spriteID: 8cc17927cad4a424a89eb39488e1825a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 47}
+  - name: attack_darkclone_Frame_2
+    originalName: 
+    pivot: {x: 0.1590909, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 71
+      y: 4
+      width: 44
+      height: 21
+    spriteID: ce2ce035c67b84b4dbe08492c4cf2e38
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 71, y: 4}
+  - name: attack_darkclone_Frame_3
+    originalName: 
+    pivot: {x: 0.25, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 132
+      width: 28
+      height: 21
+    spriteID: cd866a8622a7fa742b860017cab653af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 132}
+  - name: attack_darkclone_Frame_4
+    originalName: 
+    pivot: {x: 0.36842105, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 220
+      width: 19
+      height: 21
+    spriteID: d4a190db938d89848b9b85c48f56a6a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 220}
+  - name: attack_darkclone_Frame_5
+    originalName: 
+    pivot: {x: 0.3529412, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 189
+      width: 17
+      height: 22
+    spriteID: 0cf619d612e5f944f80a648700c70532
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 189}
+  - name: attack_darkclone_Frame_11
+    originalName: 
+    pivot: {x: 0.18644068, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 59
+      height: 35
+    spriteID: c7673035cfcee8242823706ad7bce4b5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: attack_darkclone_Frame_12
+    originalName: 
+    pivot: {x: 0.04761905, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 81
+      y: 47
+      width: 42
+      height: 16
+    spriteID: a8ecc423bbbfb8a4a9154442f9f93ffa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 81, y: 47}
+  - name: attack_darkclone_Frame_13
+    originalName: 
+    pivot: {x: 0.05263158, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 73
+      y: 76
+      width: 38
+      height: 16
+    spriteID: 6aad9dc01e64eac4dbd9dbdd18127e9c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 73, y: 76}
+  - name: attack_darkclone_Frame_14
+    originalName: 
+    pivot: {x: 0.027777778, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 69
+      y: 104
+      width: 36
+      height: 16
+    spriteID: 9ccc427c173a6b64dab5431a60ec0fc5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 69, y: 104}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -1492719368
+    name: attack_darkclone
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: attack_darkclone_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 13
+        y: 0
+        width: 26
+        height: 23
+      spriteId: f7a97ee8efc20ac42934e5d81d19b35b
+    - name: attack_darkclone_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 20
+        y: 0
+        width: 61
+        height: 20
+      spriteId: 236289ac68de0de45ae8b04ee6a40423
+    - name: attack_darkclone_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 20
+        y: 0
+        width: 57
+        height: 20
+      spriteId: 3692d90f7341a304094ca21d3c8a6512
+    - name: attack_darkclone_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 20
+        y: 0
+        width: 20
+        height: 20
+      spriteId: 27188cb52c901874cae0decc6bd8ef39
+    - name: attack_darkclone_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 20
+        y: 0
+        width: 19
+        height: 20
+      spriteId: cb09047f0ee4ee54e8589fe743b6001d
+    - name: attack_darkclone_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 18
+        y: 0
+        width: 21
+        height: 21
+      spriteId: c997ba834b6ff7748897a3c19b988683
+    - name: attack_darkclone_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 13
+        y: 0
+        width: 69
+        height: 21
+      spriteId: 8cc17927cad4a424a89eb39488e1825a
+    - name: attack_darkclone_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 20
+        y: 0
+        width: 44
+        height: 21
+      spriteId: ce2ce035c67b84b4dbe08492c4cf2e38
+    - name: attack_darkclone_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 20
+        y: 0
+        width: 28
+        height: 21
+      spriteId: cd866a8622a7fa742b860017cab653af
+    - name: attack_darkclone_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 20
+        y: 0
+        width: 19
+        height: 21
+      spriteId: d4a190db938d89848b9b85c48f56a6a1
+    - name: attack_darkclone_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 21
+        y: 0
+        width: 17
+        height: 22
+      spriteId: 0cf619d612e5f944f80a648700c70532
+    - name: attack_darkclone_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 19
+        y: 0
+        width: 59
+        height: 35
+      spriteId: c7673035cfcee8242823706ad7bce4b5
+    - name: attack_darkclone_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 28
+        y: 0
+        width: 42
+        height: 16
+      spriteId: a8ecc423bbbfb8a4a9154442f9f93ffa
+    - name: attack_darkclone_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 28
+        y: 0
+        width: 38
+        height: 16
+      spriteId: 6aad9dc01e64eac4dbd9dbdd18127e9c
+    - name: attack_darkclone_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 29
+        y: 0
+        width: 36
+        height: 16
+      spriteId: 9ccc427c173a6b64dab5431a60ec0fc5
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 128, y: 64}

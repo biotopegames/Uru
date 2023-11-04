@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8290706735153104962
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 668188040, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668188040, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668188040, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602874818, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602874818, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.424635
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158179, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158188, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_Name
+      value: Red Beetle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050027928158188, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050028267652685, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050028267652685, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238050028267652685, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 23acfd3820e072d418cea6cb1e19fb2c, type: 3}
