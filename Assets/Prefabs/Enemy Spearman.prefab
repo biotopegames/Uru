@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryTime: 0.16
-  attackCooldown: 1
+  attackCooldown: 2
   attackCounter: 0
   attackRecovering: 0
 --- !u!114 &6001826676127021538

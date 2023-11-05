@@ -128,6 +128,7 @@ public class Companion : MonoBehaviour
         {
             anim.SetBool("isRunning", true);
             Vector2 moveDirection = new Vector2(PlayerController.Instance.transform.position.x - transform.position.x, 0).normalized;
+            //Vector2 moveDirection = new Vector2(PlayerController.Instance.transform.position.x - transform.position.x, PlayerController.Instance.transform.position.y - transform.position.y).normalized;
             rb.velocity = moveDirection * stats.moveSpeed;
         }
         else
