@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour
     public float attentionRange = 5f;
     public float stoppingDistance = 0.2f;
 
-    [SerializeField] private GameObject patrolPoint1;
-    [SerializeField] private GameObject patrolPoint2;
+    [SerializeField] private Vector3 patrolPoint1;
+    [SerializeField] private Vector3 patrolPoint2;
     [SerializeField] private float point1;
     [SerializeField] private float point2;
     public GameObject graphic;
@@ -81,6 +81,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        patrolPoint1 = transform.position;
+        patrolPoint2.y = transform.position.y;
         movementSpeed = stats.moveSpeed;
         movementSpeed = Random.Range(movementSpeed - maxSpeedDeviation, movementSpeed + maxSpeedDeviation);
         originalXPosition = transform.position.x;
@@ -88,8 +90,8 @@ public class Enemy : MonoBehaviour
         recoveryCounter = GetComponent<RecoveryCounter>();
         enemyBase = GetComponent<EnemyBase>();
         currentState = EnemyState.Patrolling;
-        point1 = patrolPoint1.transform.position.x;
-        point2 = patrolPoint2.transform.position.x;
+        point1 = patrolPoint1.x;
+        point2 = patrolPoint2.x;
         rb = GetComponent<Rigidbody2D>();
         targetPositionX = point1;
         launch = 0;
@@ -156,12 +158,12 @@ public class Enemy : MonoBehaviour
 
             float tolerance = 0.1f; // Adjust this value as needed
 
-            if (Mathf.Abs(transform.position.x - patrolPoint1.transform.position.x) < tolerance)
+            if (Mathf.Abs(transform.position.x - point1) < tolerance)
             {
                 targetPositionX = point2;
             }
 
-            if (Mathf.Abs(transform.position.x - patrolPoint2.transform.position.x) < tolerance)
+            if (Mathf.Abs(transform.position.x - point2) < tolerance)
             {
                 targetPositionX = point1;
             }
@@ -258,7 +260,7 @@ public class Enemy : MonoBehaviour
         if (IsTargetInRange(attentionRange) == false)
         {
             target = null;
-            targetPositionX = patrolPoint1.transform.position.x;
+            targetPositionX = point1;
             currentState = EnemyState.Patrolling;
         }
     }
@@ -270,6 +272,15 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stoppingDistance);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attentionRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, stoppingDistance);
+
+        // Draw a line between patrol points
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(patrolPoint1, patrolPoint2);
     }
 
     public void Flip()

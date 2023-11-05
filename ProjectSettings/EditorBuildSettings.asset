@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight level.unity
     guid: 4118d91444033944c84f91e0bf257994
+  - enabled: 1
+    path: Assets/Scenes/Maze level.unity
+    guid: 6eabd5e7528879842b28ceff1fa94498
   m_configObjects: {}

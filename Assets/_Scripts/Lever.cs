@@ -4,10 +4,16 @@ public class Lever : MonoBehaviour
 {
     public GameObject objectToActivate;  // The GameObject to activate when the lever is triggered.
 
-    private bool isActivated = false;   // Flag to track whether the lever has been activated.
+    [SerializeField]private bool isActivated = false;   // Flag to track whether the lever has been activated.
+    private AudioSource audio;
 
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     // This method is called when a GameObject enters the trigger collider of the lever.
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !isActivated)
         {
@@ -21,6 +27,7 @@ public class Lever : MonoBehaviour
     {
         if (objectToActivate != null)
         {
+            audio.Play();
             objectToActivate.SetActive(true);  // Activate the specified GameObject.
             isActivated = true;               // Set the lever as activated to prevent further activation.
         }

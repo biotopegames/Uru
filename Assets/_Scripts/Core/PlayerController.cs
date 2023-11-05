@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
             if(isClimbing)
             {
             float verticalInput = Input.GetAxis("Vertical"); // Detect input for climbing (up or down).
-            Vector2 climbVelocity = new Vector2(0, verticalInput * 0.5f);
+            Vector2 climbVelocity = new Vector2(0, verticalInput * 0.8f);
             GetComponent<Rigidbody2D>().velocity = climbVelocity;
             if(verticalInput == 0)
             anim.SetTrigger("climb");
@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("isClimbing", false);
             isClimbing = false;
             // Restore gravity.
-            GetComponent<Rigidbody2D>().gravityScale = 2;
+            GetComponent<Rigidbody2D>().gravityScale = 1.5f;
         }
     }
 
