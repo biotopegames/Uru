@@ -20,8 +20,8 @@ public class EnemyBase : MonoBehaviour
 
     public void Hurt(int damage, Vector2 attackDirection)
     {
-        if (!recoveryCounter.recovering)
-        {
+        //if (!recoveryCounter.recovering)
+        //{
             if (gameObject.TryGetComponent(out Enemy enemy))
             {
                 if (enemy.stats.health > 1)
@@ -81,12 +81,12 @@ public class EnemyBase : MonoBehaviour
                 {
                     // if (!isDead)
                     // {
-                        companion.stats.health = 0;
-                        Die();
+                    companion.stats.health = 0;
+                    Die();
                     // }
                 }
             }
-        }
+        //}
     }
     public void Die()
     {
@@ -124,7 +124,7 @@ public class EnemyBase : MonoBehaviour
 
         if (GetComponent<Companion>() != null)
         {
-           // GetComponent<Companion>().anim.SetTrigger("hurt");
+            // GetComponent<Companion>().anim.SetTrigger("hurt");
 
             this.gameObject.GetComponent<Companion>().anim.SetTrigger("dead");
             isDead = true;

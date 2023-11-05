@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
     public int damage;
     public float arrowSpeed;
     private Rigidbody2D rb;
+    [SerializeField] private float targetYOffset;
 
     void Start()
     {

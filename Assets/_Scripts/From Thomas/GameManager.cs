@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
 
         // Get the index of the current active scene.
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+        HUD.Instance.CloseAllMenus();
+        PlayerController.Instance.stats.health = PlayerController.Instance.stats.fullHealth;
         // Load the current scene by its index, effectively reloading it.
         SceneManager.LoadScene(currentSceneIndex);
     }

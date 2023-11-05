@@ -205,4 +205,12 @@ public void ShowTab(string tabName)
             Time.timeScale = 1;
         }
     }
+
+
+    public void CloseAllMenus()
+    {
+        deadMenu.SetActive(false);
+        if(isInventoryOpen)
+        ShowUI();
+    }
 }

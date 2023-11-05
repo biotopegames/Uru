@@ -150,8 +150,8 @@ MonoBehaviour:
   patrolRange: 3
   attentionRange: 4.14
   stoppingDistance: 1.73
-  patrolPoint1: {fileID: 0}
-  patrolPoint2: {fileID: 0}
+  patrolPoint1: {x: 0, y: 0, z: 0}
+  patrolPoint2: {x: 0, y: 0, z: 0}
   point1: 0
   point2: 0
   graphic: {fileID: 4089574423497876788}
@@ -532,6 +532,7 @@ MonoBehaviour:
   audioSource: {fileID: 4089574423497876786}
   particleSystem: {fileID: 7163825342506218138, guid: a80b99f02266d164a9d137402825bfa3, type: 3}
   setBoolInAnimator: {fileID: 0}
+  targetYOffset: 0.2
 --- !u!82 &4089574423497876786
 AudioSource:
   m_ObjectHideFlags: 0
@@ -544,7 +545,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
+  m_Volume: 0.314
   m_Pitch: 1
   Loop: 0
   Mute: 0
