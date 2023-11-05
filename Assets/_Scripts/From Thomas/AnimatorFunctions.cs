@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,6 +44,12 @@ public class AnimatorFunctions : MonoBehaviour
 
     public void EmitParticles(int amount)
     {
+        // if (!particleSystem) return;
+
+
+        Instantiate(particleSystem, transform.position , Quaternion.identity);
+
+        // instantiateParticles(amount);
         particleSystem.Emit(amount);
     }
 
@@ -63,7 +69,7 @@ public class AnimatorFunctions : MonoBehaviour
     {
         Enemy enemy = GetComponentInParent<Enemy>();
         // Calculate the direction to the target.
-        Vector3 targetPosition = new Vector3(enemy.GetTarget().transform.position.x, enemy.GetTarget().transform.position.y + 0.1f);
+        Vector3 targetPosition = new Vector3(enemy.GetTarget().transform.position.x, enemy.GetTarget().transform.position.y + 0.4f);
         Vector3 direction = targetPosition - enemy.GetArrowSpawnPos().transform.position;
         direction.Normalize();
 
@@ -83,6 +89,11 @@ public class AnimatorFunctions : MonoBehaviour
         // Set the arrow's velocity to move toward the target.
         rb.velocity = direction * arrow.GetComponent<Arrow>().arrowSpeed;
     }
+    }
+
+    IEnumerable arroWWait()
+    {
+        yield return new WaitForSeconds(0.2f);
     }
 
     public void SetAnimBoolToFalse(string boolName)

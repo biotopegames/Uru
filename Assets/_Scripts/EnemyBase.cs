@@ -79,11 +79,11 @@ public class EnemyBase : MonoBehaviour
                 }
                 else
                 {
-                    if (!isDead)
-                    {
+                    // if (!isDead)
+                    // {
                         companion.stats.health = 0;
                         Die();
-                    }
+                    // }
                 }
             }
         }
@@ -100,8 +100,9 @@ public class EnemyBase : MonoBehaviour
             //GetComponent<Enemy>().anim.SetTrigger("hurt");
             this.gameObject.GetComponent<Enemy>().anim.SetTrigger("dead");
             this.gameObject.GetComponent<Enemy>().canMove = false;
+
             isDead = true;
-            Destroy(gameObject, 1);
+            Destroy(gameObject, 0.5f);
 
             // If enemy dies and companion is out set companion xp stats and display UI
             if (PlayerController.Instance.companionIsOut)

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryTime: 0.16
-  attackCooldown: 1.5
+  attackCooldown: 1
   attackCounter: 0
   attackRecovering: 0
 --- !u!114 &6001826676127021538
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 6001826676893359153}
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 7163825342506218138, guid: a80b99f02266d164a9d137402825bfa3, type: 3}
   setBoolInAnimator: {fileID: 0}
 --- !u!82 &6001826676893359153
 AudioSource:

@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.8
+        time: 0.65
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -39,7 +39,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.94
+        time: 0.79
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -62,17 +62,17 @@ AnimationClip:
       value: {fileID: -4775119367462048434, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
     - time: 0.4
       value: {fileID: 3390966608539772967, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 0.8
+    - time: 0.65
       value: {fileID: -6259011131939997012, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 0.87
+    - time: 0.72
       value: {fileID: -4166439289317922041, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 0.94
+    - time: 0.79
       value: {fileID: 6160698691759337449, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 1.03
+    - time: 0.88
       value: {fileID: -6648073266756215962, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 1.11
+    - time: 0.96
       value: {fileID: 6401151483247063089, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
-    - time: 1.19
+    - time: 1.04
       value: {fileID: 6401151483247063089, guid: c1cd3088838ed5b40adf3f177d3d652f, type: 3}
     attribute: m_Sprite
     path: 
@@ -114,7 +114,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2
+    m_StopTime: 1.05
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -143,7 +143,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.8
+        time: 0.65
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -152,7 +152,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.94
+        time: 0.79
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -171,7 +171,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.8
+  - time: 0.65
     functionName: PlaySound
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: af3bd3869407e3c44ad1e19e17801fb6, type: 3}

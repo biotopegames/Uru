@@ -3451,14 +3451,14 @@ MonoBehaviour:
   dialogue: {fileID: 7056817961477392870}
   selectionSound: {fileID: 8300000, guid: 52ae98c9fc3a84f3eb53acaa0c7b521e, type: 3}
   typeSounds:
-  - {fileID: 8300000, guid: 54cde38db87f74bf5b977d6e6e039ff6, type: 3}
-  typeSoundsVolumeMin: 0.08
+  - {fileID: 8300000, guid: 08235ab976c144c9ab258832cf54eff0, type: 3}
+  typeSoundsVolumeMin: 0
   typeSoundsVolumeMax: 0.18
   choice1Mesh: {fileID: 7056817962940672608}
   choice2Mesh: {fileID: 7056817961520530198}
   nameMesh: {fileID: 7056817962057115755}
   textMesh: {fileID: 7056817962989865384}
-  typeSpeed: 0.02
+  typeSpeed: 0.034
 --- !u!82 &7056817961477392871
 AudioSource:
   m_ObjectHideFlags: 0
