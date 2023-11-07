@@ -444,7 +444,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 1.3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -761,6 +761,7 @@ MonoBehaviour:
   audioSource: {fileID: 544846233736216593}
   particleSystem: {fileID: 0}
   setBoolInAnimator: {fileID: 0}
+  targetYOffset: 0
 --- !u!1 &7090230361717248046
 GameObject:
   m_ObjectHideFlags: 0

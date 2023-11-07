@@ -989,7 +989,7 @@ MonoBehaviour:
   anim: {fileID: 7238050028267652687}
   stats: {fileID: 7238050027928158177}
   patrolRange: 0
-  attentionRange: 5
+  attentionRange: 2.74
   stoppingDistance: 0.29
   graphic: {fileID: 7238050028267652684}
   layerMask:
@@ -1381,6 +1381,7 @@ MonoBehaviour:
   audioSource: {fileID: 3931175246008239577}
   particleSystem: {fileID: 0}
   setBoolInAnimator: {fileID: 0}
+  targetYOffset: 0
 --- !u!1 &7264628503838506564
 GameObject:
   m_ObjectHideFlags: 0

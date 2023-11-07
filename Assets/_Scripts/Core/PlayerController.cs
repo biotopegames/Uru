@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
+
 
 
 //using UnityEditor.Callbacks;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public PlayerSounds playerSounds;
     public bool isClimbing;
 
-        private void Awake()
+    private void Awake()
     {
         //transform.position = new Vector3(playerStartPos.x, 0);
 
@@ -63,8 +65,8 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerSounds = GetComponentInChildren<PlayerSounds>();
         origAttackCD = recoveryCounter.attackCooldown;
-        if(companionGameobject != null)
-        companionAI = companionGameobject.GetComponent<Companion>();
+        if (companionGameobject != null)
+            companionAI = companionGameobject.GetComponent<Companion>();
 
     }
 
@@ -81,6 +83,7 @@ public class PlayerController : MonoBehaviour
             // Check for left mouse click (attack)
             if (Input.GetMouseButtonDown(0) && !isRolling)
             {
+                stats.stamina -= 1;
                 if (!isGrounded)
                 {
                     StartCoroutine(SlowdownYVelocity());
@@ -140,13 +143,13 @@ public class PlayerController : MonoBehaviour
 
             anim.SetBool("isClimbing", isClimbing);
 
-            if(isClimbing)
+            if (isClimbing)
             {
-            float verticalInput = Input.GetAxis("Vertical"); // Detect input for climbing (up or down).
-            Vector2 climbVelocity = new Vector2(0, verticalInput * 0.8f);
-            GetComponent<Rigidbody2D>().velocity = climbVelocity;
-            if(verticalInput == 0)
-            anim.SetTrigger("climb");
+                float verticalInput = Input.GetAxis("Vertical"); // Detect input for climbing (up or down).
+                Vector2 climbVelocity = new Vector2(0, verticalInput * 0.8f);
+                GetComponent<Rigidbody2D>().velocity = climbVelocity;
+                if (verticalInput == 0)
+                    anim.SetTrigger("climb");
             }
 
             // Update the direction (flip sprite)
@@ -190,10 +193,10 @@ public class PlayerController : MonoBehaviour
 
 
             // Temporary way to heal pet
-            if (Input.GetKeyDown(KeyCode.P) && hasCompanion && companionIsOut) 
+            if (Input.GetKeyDown(KeyCode.P) && hasCompanion && companionIsOut)
             {
                 companionAI.stats.Heal(3);
-                stats.damage -=3;
+                stats.damage -= 3;
                 companionAI.stats.GainXp(20);
             }
 
@@ -220,10 +223,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    if(companionGameobject != null && companionGameobject.GetComponent<Stats>().health > 0 && hasCompanion){
+                    if (companionGameobject != null && companionGameobject.GetComponent<Stats>().health > 0 && hasCompanion)
+                    {
 
-                    companionGameobject.transform.position = new Vector2(transform.position.x + (direction * 0.3f), transform.position.y);
-                    anim.SetTrigger("summon");
+                        companionGameobject.transform.position = new Vector2(transform.position.x + (direction * 0.3f), transform.position.y);
+                        anim.SetTrigger("summon");
                         StartCoroutine(SummonCompanion(0.2f));
 
                     }
@@ -318,16 +322,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     // Check if player is grounded
-    //     if (collision.gameObject.CompareTag("Ground"))
-    //     {
-    //         isGrounded = true;
-    //         anim.SetBool("isGrounded", isGrounded);
-    //     }
-    // }
-
     void OnCollisionStay2D(Collision2D collision)
     {
         // Check if player is grounded
@@ -336,6 +330,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             anim.SetBool("isGrounded", isGrounded);
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -347,16 +342,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Ladder") && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-    //     {
-    //         isClimbing = true;
-    //         GetComponent<Rigidbody2D>().gravityScale = 0;
-    //     }
-    // }
-
-        void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Ladder"))
         {
@@ -383,9 +369,16 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             anim.SetBool("isGrounded", isGrounded);
         }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isGrounded = true;
+            anim.SetBool("isGrounded", isGrounded);
+            playerRigidbody.velocity = Vector2.zero;
+        }
     }
 
-        IEnumerator SlowdownYVelocity()
+    IEnumerator SlowdownYVelocity()
     {
         float initialVelocity = playerRigidbody.velocity.y;
         float startTime = Time.time;

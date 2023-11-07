@@ -18,10 +18,12 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Color originalRimColor;
     private Color equippedRimColor;
     private bool itemIsEquipped;
+    private AudioSource audio;
 
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         // Hide the options buttons and info object at the start
         optionsButtons.SetActive(false);
         infoObject.SetActive(false);
@@ -101,9 +103,15 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void UseItem()
     {
-        if(slotItem != null && slotItem.GetItemType () == Item.ItemType.Consumable)
+        if (slotItem != null && slotItem.GetItemType() == Item.ItemType.Consumable)
         {
             PlayerController.Instance.stats.Heal(slotItem.healAmount);
+
+            if (slotItem.GetItemSound() != null)
+            {
+                audio.PlayOneShot(slotItem.GetItemSound());
+            }
+
             slotItem = null;
             itemSlotImage.sprite = emptySlotImage.sprite;
             CancelOptions();
@@ -113,19 +121,29 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void EquipItem()
     {
+
         CancelOptions();
         if (slotItem != null && slotItem.GetItemType() == Item.ItemType.Rune)
         {
+            if (slotItem.GetItemSound() != null)
+            {
+                audio.PlayOneShot(slotItem.GetItemSound(), 0.2f);
+            }
             Rune rune = (Rune)slotItem;
+
             if (!itemIsEquipped)
             {
                 PlayerController.Instance.stats.fullHealth += (rune.hp);
+                PlayerController.Instance.stats.stamina += (rune.staminaAmount);
+
                 itemIsEquipped = true;
                 SlotEquipped();
             }
             else
             {
                 PlayerController.Instance.stats.fullHealth -= (rune.hp);
+                PlayerController.Instance.stats.stamina -= (rune.staminaAmount);
+
                 itemIsEquipped = false;
                 SlotEquipped();
             }

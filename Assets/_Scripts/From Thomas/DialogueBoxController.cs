@@ -30,11 +30,14 @@ public class DialogueBoxController : MonoBehaviour
     [SerializeField] TextMeshProUGUI choice2Mesh;
     [SerializeField] TextMeshProUGUI nameMesh;
     [SerializeField] TextMeshProUGUI textMesh;
+    [Header("Time between each character")]
+
+    [SerializeField] private float typeSpeed = 1f;
+
 
     [Header("Other")]
     private bool ableToAdvance;
     private bool activated;
-    [SerializeField] private float typeSpeed = 1f;
     private int choiceLocation;
     private int cPos = 0;
     private bool deactivateAfterTalk;
@@ -113,7 +116,7 @@ public class DialogueBoxController : MonoBehaviour
                     animator.SetInteger("choiceSelection", 1);
                 }
 
-                audioSource.PlayOneShot(selectionSound);
+                audioSource.PlayOneShot(selectionSound, 0.2f);
                 horizontalKeyIsDown = true;
             }
 

@@ -19,7 +19,10 @@ public class Item : ScriptableObject
     public int damage;
     public int defense;
     public float attackSpeed;
+    public int staminaAmount;
     public int hpRegeneration;
+    [SerializeField] private AudioClip itemSound;
+
     public GameObject companionHatchling;
 
     public enum ItemType
@@ -29,6 +32,11 @@ public class Item : ScriptableObject
         Consumable,
         Equipment,
         Egg,
+    }
+
+    public AudioClip GetItemSound()
+    {
+        return itemSound;
     }
 
     public ItemType GetItemType()

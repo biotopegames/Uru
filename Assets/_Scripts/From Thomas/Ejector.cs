@@ -11,10 +11,10 @@ public class Ejector : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bounceSound;
-    [SerializeField] private BoxCollider2D collectableTrigger;
+    [SerializeField] private CircleCollider2D collectableTrigger;
     private float counter; //Counts to a value, and then allows the collectable can be collected
     public bool launchOnStart;
-    private Vector2 launchPower = new Vector2(300,300);
+    private Vector2 launchPower = new Vector2(100,100);
     private Rigidbody2D rb;
 
     // Use this for initialization

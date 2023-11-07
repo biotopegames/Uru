@@ -14919,6 +14919,7 @@ MonoBehaviour:
   audioSource: {fileID: 265597317}
   particleSystem: {fileID: 0}
   setBoolInAnimator: {fileID: 0}
+  targetYOffset: 0
 --- !u!82 &265597317
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27519,8 +27520,8 @@ MonoBehaviour:
   patrolRange: 3
   attentionRange: 1.23
   stoppingDistance: 0.37
-  patrolPoint1: {fileID: 1966152898}
-  patrolPoint2: {fileID: 1886290638}
+  patrolPoint1: {x: 0, y: 0, z: 0}
+  patrolPoint2: {x: 0, y: 0, z: 0}
   point1: 0
   point2: 0
   graphic: {fileID: 265597311}
@@ -31569,7 +31570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546422780541, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546422780541, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31613,7 +31614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.5341268
+      value: -6.5351224
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50007,67 +50008,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1607821232
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.5339999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.39200002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297809617127517393, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_Name
-      value: Item Egg Beetle Variant (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297809617127517393, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
 --- !u!1001 &1625223957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50101,7 +50041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697365682160897544, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8697365682160897544, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50798,7 +50738,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868723953
 GameObject:
@@ -60780,67 +60720,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &2146528040
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.2260001
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.39200002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696772797521269901, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297809617127517393, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_Name
-      value: Item Egg Beetle Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7297809617127517393, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2053713063dd0e444af64b6a82d3b034, type: 3}
 --- !u!1001 &220634343888561870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60916,15 +60795,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3410839328474048112, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: loadSceneName
-      value: Fight level
+      value: Maze level
       objectReference: {fileID: 0}
     - target: {fileID: 3410839328474048112, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: playerPosXInNextScene
-      value: -7.35
+      value: -6.269583
       objectReference: {fileID: 0}
     - target: {fileID: 3410839328474048112, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: playerPosYInNextScene
-      value: 0.254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8675715585381971596, guid: accedf0add9c11e4980c2ededc45fe6c, type: 3}
       propertyPath: m_Size.x

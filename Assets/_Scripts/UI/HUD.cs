@@ -40,6 +40,7 @@ public class HUD : MonoBehaviour
     public Animator anim;
     public GameObject infoObject;
     public GameObject deadMenu;
+    private Healthbar healthbar;
 
 
     // Singleton instantiation
@@ -158,6 +159,11 @@ public void ShowTab(string tabName)
         itemsTabButton.image.color = itemsTabButton.colors.selectedColor; // Set items tab button to selected color
     }
 }
+
+    public void LerpHealth(int damage)
+    {
+        
+    }
 
     public void ShowObject(GameObject obj)
     {
