@@ -12,6 +12,7 @@ TagManager:
   - Enemy arrow
   - Player attack
   - Platform
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Ground
   - Companion
   - IgnorePlayer
-  - 
+  - EnemyProjectiles
   - 
   - 
   - 

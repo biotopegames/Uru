@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         HUD.Instance.CloseAllMenus();
         PlayerController.Instance.stats.health = PlayerController.Instance.stats.fullHealth;
         // Load the current scene by its index, effectively reloading it.
+        PlayerController.Instance.transform.position = PlayerController.Instance.respawnPosition;
         SceneManager.LoadScene(currentSceneIndex);
     }
 

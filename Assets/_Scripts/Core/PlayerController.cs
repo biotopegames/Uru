@@ -9,7 +9,7 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-
+    public Vector2 respawnPosition;
     public static PlayerController Instance { get; private set; }
     private float origAttackCD;
     public float changedAttackCD;
@@ -333,6 +333,18 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            isGrounded = true;
+            anim.SetBool("isGrounded", isGrounded);
+            playerRigidbody.velocity = Vector2.zero;
+        }
+    }
+
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ladder"))
@@ -340,6 +352,12 @@ public class PlayerController : MonoBehaviour
             isClimbing = true;
             GetComponent<Rigidbody2D>().gravityScale = 0;
         }
+
+        if (other.CompareTag("Checkpoint"))
+        {
+            respawnPosition = other.transform.position;
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -369,13 +387,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             anim.SetBool("isGrounded", isGrounded);
         }
-
-        if (collision.gameObject.CompareTag("Platform"))
-        {
-            isGrounded = true;
-            anim.SetBool("isGrounded", isGrounded);
-            playerRigidbody.velocity = Vector2.zero;
-        }
     }
 
     IEnumerator SlowdownYVelocity()
@@ -383,10 +394,10 @@ public class PlayerController : MonoBehaviour
         float initialVelocity = playerRigidbody.velocity.y;
         float startTime = Time.time;
 
-        while (Time.time < startTime + 0.2f)
+        while (Time.time < startTime + 0.072f)
         {
             float elapsed = Time.time - startTime;
-            float t = elapsed / 0.2f;
+            float t = elapsed / 0.072f;
             float newVelocity = Mathf.Lerp(initialVelocity, 0f, t);
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, newVelocity);
             yield return null;

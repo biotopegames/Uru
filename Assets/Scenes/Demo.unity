@@ -116718,6 +116718,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491942, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
+      propertyPath: rollForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090230361412491942, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: companionGameobject
       value: 
       objectReference: {fileID: 1486426515}

@@ -36,12 +36,13 @@ public class Dialogue : MonoBehaviour
         //NPC
         dialogue.Add("SignA", new string[] {
             "They DESTROYED everything... there's no guardian creatures to defend us anymore.",
-            "get me the 3 totems i might be able to summon one more."
+            "If you can get me the 3 bug totems i might be able to summon one more."
         });
 
         //NPC
         dialogue.Add("SignB", new string[] {
             "Congratulations you found all totems!",
+            "Here take this egg! you can hatch at the alter!"
         });
 
         //NPC
