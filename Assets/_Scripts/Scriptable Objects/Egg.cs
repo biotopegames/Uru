@@ -8,5 +8,4 @@ public class Egg : Item
 {
 
 
-public GameObject companionHatchling;
 }

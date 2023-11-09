@@ -13,6 +13,8 @@ TagManager:
   - Player attack
   - Platform
   - Checkpoint
+  - Breakable
+  - Lookahead target
   layers:
   - Default
   - TransparentFX

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
+
 
 
 
@@ -14,14 +14,26 @@ public class PlayerController : MonoBehaviour
     private float origAttackCD;
     public float changedAttackCD;
     private float moveSpeed = 5f;
-    public float jumpForce = 5f;
+
+    [Header("Jumping variables")]
+    public float longJumpForce = 5f;
+    public float jumpHoldDuration = 0.3f;  // Time the jump button needs to be held for a long jump.
+    [SerializeField] private float jumpDuration;
+
+    [SerializeField] private float shortJumpForce;
+    [SerializeField] private float jumpPressTime;
+    // public Transform groundCheck;
+    // public LayerMask groundLayer;
+    [SerializeField] private bool isGrounded = false;
+
+    [Header("roll variables")]
+
     public float rollForce = 10f;
     public float rollDuration = 1f;
     public float chargeDuration = 1f;
     public Animator anim;
     private Transform playerTransform;
     private float direction = 1f; // 1 for right, -1 for left
-    private bool isGrounded = true;
     private Rigidbody2D playerRigidbody;
     private int currentAttack = 1;
     private float lastAttackTime = 0f;
@@ -58,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        shortJumpForce = longJumpForce - 1;
         recoveryCounter = GetComponent<RecoveryCounter>();
         moveSpeed = stats.moveSpeed;
         anim = GetComponentInChildren<Animator>();
@@ -73,6 +86,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        // isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        // anim.SetBool("isGrounded", isGrounded);
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             HUD.Instance.ShowUI();
@@ -83,7 +99,7 @@ public class PlayerController : MonoBehaviour
             // Check for left mouse click (attack)
             if (Input.GetMouseButtonDown(0) && !isRolling)
             {
-                stats.stamina -= 1;
+                stats.stamina -= 5;
                 if (!isGrounded)
                 {
                     StartCoroutine(SlowdownYVelocity());
@@ -132,14 +148,15 @@ public class PlayerController : MonoBehaviour
             }
 
             anim.SetFloat("moveY", playerRigidbody.velocity.y);
-
-            // Get the input for horizontal movement
             float horizontalInput = Input.GetAxis("Horizontal");
 
-            // Calculate the new position
-            Vector3 newPosition = playerTransform.position + new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0f, 0f);
-            // Update the position using Transform
-            playerTransform.position = newPosition;
+            // Get the input for horizontal movement
+            if (!isBlocking)
+            {            // Calculate the new position
+                Vector3 newPosition = playerTransform.position + new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0f, 0f);
+                // Update the position using Transform
+                playerTransform.position = newPosition;
+            }
 
             anim.SetBool("isClimbing", isClimbing);
 
@@ -168,16 +185,52 @@ public class PlayerController : MonoBehaviour
             // Check for Space key (jump)
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
             {
-                playerRigidbody.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                // jumpPressTime = Time.time;
                 anim.SetTrigger("jump");
                 stats.stamina -= 5;
+                // jumpDuration = Time.time - jumpPressTime;
+                playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
+                // playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, shortJumpForce);
+
+                // playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
             }
+
+            // if(Input.GetKeyUp(KeyCode.Space) && !isGrounded)
+            // {
+
+            //     if (jumpDuration < jumpHoldDuration)
+            //     {
+            //         playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 0);
+            //     }
+
+            // }
+
+
+            // Check if the jump button is held.
+            // if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
+            // {
+            //     anim.SetTrigger("jump");
+            //     stats.stamina -= 5;
+            //     jumpPressTime = Time.time;
+            //     float jumpDuration = Time.time - jumpPressTime;
+
+            //     // Apply a higher jump force if the button is held for longer than jumpHoldDuration.
+            //     if (jumpDuration > jumpHoldDuration)
+            //     {
+            //         playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
+            //     }
+            //     else
+            //     {
+            //         playerRigidbody.AddForce(new Vector2(0f, shortJumpForce), ForceMode2D.Impulse);
+            //     }
+            // }
+
 
             if (Input.GetKey(KeyCode.Q))
             {
                 isBlocking = true;
                 anim.SetBool("isBlocking", true);
-                //playerRigidbody.velocity = Vector2.zero;
+                // playerRigidbody.velocity = Vector2.zero;
             }
 
             if (Input.GetKeyUp(KeyCode.Q))
@@ -261,12 +314,14 @@ public class PlayerController : MonoBehaviour
 
 
             // Check for Left Control key (roll)
-            if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && stats.SpendStamina(5) && !isRolling)
+            if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter > 0.4f)
             {
+
                 playerRigidbody.AddForce(new Vector2(direction * rollForce, 0f), ForceMode2D.Impulse);
                 anim.SetTrigger("roll");
                 rollEndTime = Time.time + rollDuration;
                 stats.SpendStamina(5);
+                recoveryCounter.ResetCounter();
             }
 
             if (Time.time >= rollEndTime)
@@ -356,9 +411,16 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Checkpoint"))
         {
             respawnPosition = other.transform.position;
+            HUD.Instance.ShowInfoText("Checkpoint reached!");
         }
+    }
+
+    public void Jump()
+    {
+
 
     }
+
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -394,14 +456,19 @@ public class PlayerController : MonoBehaviour
         float initialVelocity = playerRigidbody.velocity.y;
         float startTime = Time.time;
 
-        while (Time.time < startTime + 0.072f)
+        while (Time.time < startTime + 0.085f)
         {
             float elapsed = Time.time - startTime;
-            float t = elapsed / 0.072f;
-            float newVelocity = Mathf.Lerp(initialVelocity, 0f, t);
+            float t = elapsed / 0.2f;
+            float newVelocity = Mathf.Lerp(initialVelocity, 0.5f, t);
             playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, newVelocity);
             yield return null;
         }
+
+        // Time.timeScale = 0.5f;
+        // yield return new WaitForSeconds(0.1f);
+        // Time.timeScale = 1;
+
     }
 
 }

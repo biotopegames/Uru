@@ -433,6 +433,7 @@ MonoBehaviour:
   slider: {fileID: 773916571}
   staminaSlider: {fileID: 0}
   isMinion: 1
+  fillSpeed: 1
   companionHealthBar: {fileID: 0}
 --- !u!95 &360318473422924980
 Animator:
@@ -940,7 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullHealth: 0
   health: 100
-  damage: 1
+  damage: 2
   name: Turo
   stamina: 10
   maxStamina: 0

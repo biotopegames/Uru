@@ -6,33 +6,39 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    [SerializeField]private Stats stats;
+    [SerializeField] private Stats stats;
     public Slider slider;
     [SerializeField] private Slider staminaSlider;
     public bool isMinion;
+    public float fillSpeed = 1.0f; // Adjust this value to control the fill speed.
+
+
     [SerializeField] private GameObject companionHealthBar; // If it's a companion and health is full don't showhealthbar
 
     void Awake()
     {
-        if(isMinion)
+        if (isMinion)
         {
-        companionHealthBar = GameObject.Find("Canvas/Slider");
+            companionHealthBar = GameObject.Find("Canvas/Slider");
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(!isMinion){
-        stats = PlayerController.Instance.GetComponent<Stats>();
+        if (!isMinion)
+        {
+            stats = PlayerController.Instance.GetComponent<Stats>();
         }
         else
         {
-        stats = GetComponentInParent<Stats>();
+            stats = GetComponentInParent<Stats>();
         }
         slider.maxValue = stats.fullHealth; // Set the maxValue of the slider to stats.health
-        if(staminaSlider != null)
-        staminaSlider.maxValue = stats.maxStamina; // Set the maxValue of the slider to stats.health
+        slider.value = stats.health;
+
+        if (staminaSlider != null)
+            staminaSlider.maxValue = stats.maxStamina; // Set the maxValue of the slider to stats.health
 
 
     }
@@ -41,21 +47,27 @@ public class Healthbar : MonoBehaviour
     void Update()
     {
 
-        slider.value = stats.health;
-
-        if (isMinion)
+        if (!isMinion)
         {
-        if(stats.health == stats.fullHealth)
-        {
-            companionHealthBar.SetActive(false);
-        }
-        else
-        {
-            companionHealthBar.SetActive(true);
+            slider.value = stats.health;
         }
 
-        
-        slider.maxValue = stats.fullHealth; // Set the maxValue of the slider to stats.health
+
+            if (isMinion)
+        {
+            slider.value = stats.health;
+
+            if (stats.health == stats.fullHealth)
+            {
+                companionHealthBar.SetActive(false);
+            }
+            else
+            {
+                companionHealthBar.SetActive(true);
+            }
+
+
+            slider.maxValue = stats.fullHealth; // Set the maxValue of the slider to stats.health
 
             if (transform.parent.localScale.x < 0)
             {
@@ -70,9 +82,11 @@ public class Healthbar : MonoBehaviour
         }
         else
         {
-        staminaSlider.value = stats.stamina;
-        slider.maxValue = stats.fullHealth; // Set the maxValue of the slider to stats.health
-        staminaSlider.maxValue = stats.maxStamina; // Set the maxValue of the slider to stats.health
+            staminaSlider.value = stats.stamina;
+            slider.maxValue = stats.fullHealth; // Set the maxValue of the slider to stats.health
+            staminaSlider.maxValue = stats.maxStamina; // Set the maxValue of the slider to stats.health
         }
     }
+
+
 }

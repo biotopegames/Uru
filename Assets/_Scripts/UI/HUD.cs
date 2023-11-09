@@ -160,11 +160,6 @@ public void ShowTab(string tabName)
     }
 }
 
-    public void LerpHealth(int damage)
-    {
-        
-    }
-
     public void ShowObject(GameObject obj)
     {
         if(obj.activeSelf == false)
@@ -211,6 +206,8 @@ public void ShowTab(string tabName)
             Time.timeScale = 1;
         }
     }
+
+
 
 
     public void CloseAllMenus()

@@ -13,10 +13,7 @@ EditorBuildSettings:
     guid: d011cd83c507ad44884a1a0ae306c214
   - enabled: 1
     path: Assets/Scenes/Demo 1.unity
-    guid: 68412ec253726ad45b48b5ac1fe8721d
-  - enabled: 1
-    path: Assets/Scenes/Fight level.unity
-    guid: 4118d91444033944c84f91e0bf257994
+    guid: 2d8a93a3d8efa5e40a91dafc8a53a5e7
   - enabled: 1
     path: Assets/Scenes/Maze level.unity
     guid: 6eabd5e7528879842b28ceff1fa94498

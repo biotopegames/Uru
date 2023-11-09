@@ -22,70 +22,73 @@ public class EnemyBase : MonoBehaviour
     {
         //if (!recoveryCounter.recovering)
         //{
-            if (gameObject.TryGetComponent(out Enemy enemy))
+        if (gameObject.TryGetComponent(out Enemy enemy))
+        {
+            if (enemy.stats.health > 1)
             {
-                if (enemy.stats.health > 1)
-                {
-                    Debug.Log("Enemy took damage: " + damage);
-                    enemy.stats.health -= damage;
-                    enemy.anim.SetTrigger("hurt");
+                Debug.Log("Enemy took damage: " + damage);
+                enemy.stats.health -= damage;
+                enemy.anim.SetTrigger("hurt");
 
-                    // Apply knockback to the enemy
-                    enemy.KnockBack();
-                    Rigidbody2D enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
-                    enemyRigidbody?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
-                    recoveryCounter.ResetCounter();
-                }
-                else
-                {
-                    if (!isDead)
-                    {
-                        recoveryCounter.ResetCounter();
-                        enemy.stats.health = 0;
-                        Die();
-                    }
-                }
+                // Apply knockback to the enemy
+                enemy.KnockBack();
+                Rigidbody2D enemyRigidbody = enemy.GetComponent<Rigidbody2D>();
+                enemyRigidbody?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
+                recoveryCounter.ResetCounter();
             }
-            else if (gameObject.TryGetComponent(out PlayerController player))
+            else
             {
-                // Apply knockback to the player
-                Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
-                playerRigidbody?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
-                player.playerSounds.PlayHurtSound();
-
-                if (player.stats.health > 0 && !PlayerController.Instance.isBlocking)
+                if (!isDead)
                 {
-                    player.stats.health -= damage;
-                    player.anim.SetTrigger("hurt");
                     recoveryCounter.ResetCounter();
-                    if (player.stats.health <= 0)
-                    {
-                        player.stats.health = 0;
-                        Die();
-                    }
-                }
-            }
-            else if (gameObject.TryGetComponent(out Companion companion))
-            {
-                if (companion.stats.health > 1)
-                {
-                    companion.stats.health -= damage;
-                    // Apply knockback to the player's companion
-                    Rigidbody2D companionRb = companion.GetComponent<Rigidbody2D>();
-                    companionRb?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
-                    companion.KnockBack();
-                    companion.anim.SetTrigger("hurt");
-                    recoveryCounter.ResetCounter();
-                }
-                else
-                {
-                    // if (!isDead)
-                    // {
-                    companion.stats.health = 0;
+                    enemy.stats.health = 0;
                     Die();
-                    // }
                 }
             }
+        }
+        else if (gameObject.TryGetComponent(out PlayerController player))
+        {
+            // Apply knockback to the player
+            Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
+            playerRigidbody?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
+            player.playerSounds.PlayHurtSound();
+
+            if (player.stats.health > 0 && !PlayerController.Instance.isBlocking)
+            {
+                player.stats.health -= damage;
+                // HUD.Instance.UpdatePlayerHealth(player.stats.health - damage);
+                player.anim.SetTrigger("hurt");
+                recoveryCounter.ResetCounter();
+                if (player.stats.health <= 0)
+                {
+                    player.stats.health = 0;
+                    // HUD.Instance.UpdatePlayerHealth(0);
+
+                    Die();
+                }
+            }
+        }
+        else if (gameObject.TryGetComponent(out Companion companion))
+        {
+            if (companion.stats.health > 1)
+            {
+                companion.stats.health -= damage;
+                // Apply knockback to the player's companion
+                Rigidbody2D companionRb = companion.GetComponent<Rigidbody2D>();
+                companionRb?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
+                companion.KnockBack();
+                companion.anim.SetTrigger("hurt");
+                recoveryCounter.ResetCounter();
+            }
+            else
+            {
+                // if (!isDead)
+                // {
+                companion.stats.health = 0;
+                Die();
+                // }
+            }
+        }
         //}
     }
     public void Die()

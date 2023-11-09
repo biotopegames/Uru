@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Allows object to break after depleting its "health".
@@ -29,35 +30,27 @@ public class Breakable : MonoBehaviour
 
     public void GetHurt(int hitPower)
     {
-        // //If breakable object health is above zero, it's not recovering from a recent hit, get hit!
-        // if (health > 0 && !recoveryCounter.recovering)
-        // {
-        //     if (!requireDownAttack || (requireDownAttack && NewPlayer.Instance.pounding))
-        //     {
-        //         if (NewPlayer.Instance.pounding)
-        //         {
-        //             NewPlayer.Instance.PoundEffect();
-        //         }
-
-        //         if (hitSound != null)
-        //         {
-        //             GameManager.Instance.audioSource.PlayOneShot(hitSound);
-        //         }
+        //If breakable object health is above zero, it's not recovering from a recent hit, get hit!
+        if (health > 0 && !recoveryCounter.recovering)
+        {
+                if (hitSound != null && GameManager.Instance != null)
+                {
+                    GameManager.Instance.audioSource.PlayOneShot(hitSound);
+                }
                
-        //         //Ensure the player can't hit the box multiple times in one hit
-        //         recoveryCounter.counter = 0;
+                //Ensure the player can't hit the box multiple times in one hit
+                recoveryCounter.ResetCounter(); //recoveryCounter.recovering = 0;
 
-        //         StartCoroutine(NewPlayer.Instance.FreezeFrameEffect());
+                //StartCoroutine(NewPlayer.Instance.FreezeFrameEffect());
 
-        //         health -= 1;
-        //         animator.SetTrigger("hit");
+                health -= 1;
+                //animator.SetTrigger("hit");
 
-        //         if (health <= 0)
-        //         {
-        //             Die();
-        //         }
-        //     }
-        // }
+                if (health <= 0)
+                {
+                    Die();
+                }
+        }
     }
 
     public void Die()
@@ -66,8 +59,8 @@ public class Breakable : MonoBehaviour
         Time.timeScale = 1;
 
         //Activate deathParticles & unparent from this so they aren't destroyed!
-        deathParticles.SetActive(true);
-        deathParticles.transform.parent = null;
+        //deathParticles.SetActive(true);
+        //deathParticles.transform.parent = null;
 
         if (instantiator != null)
         {
@@ -81,7 +74,16 @@ public class Breakable : MonoBehaviour
         }
         else
         {
-            spriteRenderer.sprite = brokenSprite;
+            //spriteRenderer.sprite = brokenSprite;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player attack"))
+        {
+        GetHurt(-1);
+        }
+    }
+
 }

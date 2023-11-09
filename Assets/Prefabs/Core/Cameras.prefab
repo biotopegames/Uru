@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   player: {fileID: 0}
+  lookAheadTarget: {fileID: 0}
   virtualCamera: {fileID: 0}
 --- !u!1 &2125802546422780540
 GameObject:
@@ -412,7 +413,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
+  m_XDamping: 2.2
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
