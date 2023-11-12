@@ -299,7 +299,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && stats.SpendStamina(5))
+            if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && stats.SpendStamina(5))
             {
                 anim.SetTrigger("dash");
                 stats.SpendStamina(5);
@@ -308,7 +308,7 @@ public class PlayerController : MonoBehaviour
 
 
             // Check for Left Control key (roll)
-            if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter > 0.4f)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter >= 0.21)
             {
 
                 playerRigidbody.AddForce(new Vector2(facingDirection * rollForce, 0f), ForceMode2D.Impulse);
