@@ -461,7 +461,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        
+        isBlocking = true;
         canDash = false;
         isDashing = true;
         float originalGravity = playerRigidbody.gravityScale;
@@ -476,9 +476,8 @@ public class PlayerController : MonoBehaviour
 
         playerRigidbody.gravityScale = originalGravity;
         playerRigidbody.velocity = new Vector2(facingDirection, 0);
-
+        isBlocking = false;
         isDashing = false;
-
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }

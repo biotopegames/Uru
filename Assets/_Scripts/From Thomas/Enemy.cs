@@ -201,17 +201,20 @@ public class Enemy : MonoBehaviour
 
         if (!recoveryCounter.attackRecovering && !target.GetComponent<RecoveryCounter>().recovering)
         {
-            if (hasPerformedFirstAttack)
-            {
-                anim.SetTrigger("attack1");
-                recoveryCounter.ResetAttackCounter();
-            }
 
-            if (!hasPerformedFirstAttack)
-            {
-                recoveryCounter.ResetAttackCounter();
-                hasPerformedFirstAttack = true;
-            }
+            anim.SetTrigger("attack1");
+            recoveryCounter.ResetAttackCounter();
+            // if (hasPerformedFirstAttack)
+            // {
+            //     anim.SetTrigger("attack1");
+            //     recoveryCounter.ResetAttackCounter();
+            // }
+
+            // if (!hasPerformedFirstAttack)
+            // {
+            //     recoveryCounter.ResetAttackCounter();
+            //     hasPerformedFirstAttack = true;
+            // }
         }
 
         if (Mathf.Abs(distanceFromTargetX) > stoppingDistance && !target.GetComponent<EnemyBase>().isDead)

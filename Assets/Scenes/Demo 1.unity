@@ -27664,6 +27664,10 @@ MonoBehaviour:
   givesXP: 20
   lore: 
   staminaRegenerationRate: 1
+  timeSinceLastSpendStamina: 0
+  timeBeforeStaminaRegen: 2
+  staminaRegenWaitTime: 0.5
+  isStaminaRegenerating: 0
 --- !u!1 &458207740
 GameObject:
   m_ObjectHideFlags: 0
@@ -31548,7 +31552,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &698855604
+--- !u!1001 &795402084
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -31559,9 +31563,17 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2125802545796167380, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2125802545796167403, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5
+      value: 0.414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802545796167403, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4880892
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546422780540, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_Name
@@ -31613,11 +31625,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.533331
+      value: 0.414
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26808918
+      value: -0.4880892
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802546750370251, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.14978641
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802546750370251, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.14978641
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802546750370251, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.20754719
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802547851949530, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_LookaheadTime
+      value: 0.032
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802547851949530, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_LookaheadIgnoreY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125802547851949530, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
+      propertyPath: m_LookaheadSmoothing
+      value: 6.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
