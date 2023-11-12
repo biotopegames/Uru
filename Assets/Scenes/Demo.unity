@@ -115365,7 +115365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.534388
+      value: -6.6053925
       objectReference: {fileID: 0}
     - target: {fileID: 2125802546750370100, guid: 927e473a2ba484d75b382fc1faaf0eeb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116437,11 +116437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491942, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: dashingTime
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491942, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: dashingPower
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491942, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: companionGameobject
@@ -116493,11 +116493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491947, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: staminaRegenWaitTime
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491947, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: timeBeforeStaminaRegen
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7090230361412491947, guid: 79b18c21e6a1d5e47ad09a5fa95933f3, type: 3}
       propertyPath: staminaRegenerationRate

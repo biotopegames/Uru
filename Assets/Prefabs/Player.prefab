@@ -415,8 +415,8 @@ MonoBehaviour:
   rollDuration: 0.2
   canDash: 1
   isDashing: 0
-  dashingPower: 20
-  dashingTime: 0.5
+  dashingPower: 5
+  dashingTime: 0.2
   dashingCooldown: 1
   tr: {fileID: 8300609196514039537}
   chargeDuration: 0.7
@@ -477,8 +477,8 @@ MonoBehaviour:
   lore: 
   staminaRegenerationRate: 4
   timeSinceLastSpendStamina: 0
-  timeBeforeStaminaRegen: 2
-  staminaRegenWaitTime: 0.5
+  timeBeforeStaminaRegen: 0.5
+  staminaRegenWaitTime: 0.1
   isStaminaRegenerating: 0
 --- !u!114 &7090230361412491945
 MonoBehaviour:

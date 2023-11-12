@@ -293,8 +293,9 @@ public class PlayerController : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && stats.SpendStamina(5))
             {
+                stats.SpendStamina(5);
                 StartCoroutine(Dash());
             }
 
@@ -459,12 +460,15 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         float originalGravity = playerRigidbody.gravityScale;
         playerRigidbody.gravityScale = 0f;
-// playerRigidbody.AddForce(facingDirection * dashingPower, ForceMode2D.Impulse);
+        // playerRigidbody.AddForce(new Vector2((int)(facingDirection * dashingPower), 0), ForceMode2D.Impulse);
 
-        // playerRigidbody.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+
+        playerRigidbody.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
+        playerRigidbody.velocity = new Vector2(0.3f, 0);
+
         playerRigidbody.gravityScale = originalGravity;
         isDashing = false;
 
