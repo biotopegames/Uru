@@ -33,6 +33,12 @@ public class Breakable : MonoBehaviour
         //If breakable object health is above zero, it's not recovering from a recent hit, get hit!
         if (health > 0 && !recoveryCounter.recovering)
         {
+
+                if(animator != null) 
+                {
+                animator.SetTrigger("hit");
+                }
+
                 if (hitSound != null && GameManager.Instance != null)
                 {
                     GameManager.Instance.audioSource.PlayOneShot(hitSound);
@@ -44,7 +50,7 @@ public class Breakable : MonoBehaviour
                 //StartCoroutine(NewPlayer.Instance.FreezeFrameEffect());
 
                 health -= 1;
-                //animator.SetTrigger("hit");
+
 
                 if (health <= 0)
                 {

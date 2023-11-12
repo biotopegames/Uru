@@ -24,6 +24,11 @@ public class Stats : MonoBehaviour
     private Coroutine hpRegenerationCoroutine;
     public int staminaRegenerationRate = 1;
     private Coroutine staminaRegenerationCoroutine;
+    [SerializeField] private float timeSinceLastSpendStamina = 0f; // Time since last spend stamina
+    [SerializeField] private float timeBeforeStaminaRegen = 2f; // Time before starting to regenerate
+    [SerializeField] private float staminaRegenWaitTime = 0.5f; // Time between each regenerated stamina point
+    [SerializeField] private bool isStaminaRegenerating = false;
+
 
     private void Start()
     {
@@ -33,48 +38,55 @@ public class Stats : MonoBehaviour
         maxStamina = stamina;
     }
 
-    public void Update(){
-        if(stamina < 0){
+    public void Update()
+    {
+        if (stamina < 0)
+        {
             stamina = 0;
         }
 
-            if(stamina > maxStamina){
+        if (stamina > maxStamina)
+        {
             stamina = maxStamina;
+        }
+
+        // Update time since last spend stamina
+        if (timeSinceLastSpendStamina < timeBeforeStaminaRegen)
+        {
+            timeSinceLastSpendStamina += Time.deltaTime;
         }
     }
 
-public void PlayerTakeDamage(int dmg)
-{
-    if(health > 0)
-    health -= dmg;
-    else
+    public void PlayerTakeDamage(int dmg)
     {
-        //DIE
+        if (health > 0)
+            health -= dmg;
+        else
+        {
+            //DIE
+        }
     }
-}
 
-
-
-public void LevelUp(int leftOverXp)
-{
-    lvl++;
-    xpPoints += 5; // Award points to spend on attributes
-    currentXp = leftOverXp; // Set current XP to the leftover XP
-
-    // Increase the XP needed to level up for the next level.
-    xpNeededToLevelUp = (int)(xpNeededToLevelUp * 1.2f);
-}
-
-public void GainXp(int xpAmount)
-{
-    currentXp += xpAmount;
-
-    while (currentXp >= xpNeededToLevelUp)
+    public void LevelUp(int leftOverXp)
     {
-        currentXp -= xpNeededToLevelUp; // Deduct XP needed to level up
-        LevelUp(currentXp); // Level up with the leftover XP
+        lvl++;
+        xpPoints += 5; // Award points to spend on attributes
+        currentXp = leftOverXp; // Set current XP to the leftover XP
+
+        // Increase the XP needed to level up for the next level.
+        xpNeededToLevelUp = (int)(xpNeededToLevelUp * 1.2f);
     }
-}
+
+    public void GainXp(int xpAmount)
+    {
+        currentXp += xpAmount;
+
+        while (currentXp >= xpNeededToLevelUp)
+        {
+            currentXp -= xpNeededToLevelUp; // Deduct XP needed to level up
+            LevelUp(currentXp); // Level up with the leftover XP
+        }
+    }
 
     public void Heal(int amount)
     {
@@ -82,48 +94,6 @@ public void GainXp(int xpAmount)
         if (health > fullHealth)
         {
             health = fullHealth;
-        }
-    }
-
-    private void StartHpRegeneration()
-    {
-        StopHpRegeneration();
-        hpRegenerationCoroutine = StartCoroutine(HpRegenerationCoroutine());
-    }
-
-    private void StartStaminaRegeneration()
-    {
-            StopStaminaRegeneration();
-            staminaRegenerationCoroutine = StartCoroutine(StaminaRegenerationCoroutine());
-    }
-
-    private void StopHpRegeneration()
-    {
-        if (hpRegenerationCoroutine != null)
-        {
-            StopCoroutine(hpRegenerationCoroutine);
-            hpRegenerationCoroutine = null;
-        }
-    }
-
-    private void StopStaminaRegeneration()
-    {
-        if (staminaRegenerationCoroutine != null)
-        {
-            StopCoroutine(staminaRegenerationCoroutine);
-            staminaRegenerationCoroutine = null;
-        }
-    }
-
-    private IEnumerator StaminaRegenerationCoroutine()
-    {
-        while (true)
-        {
-            if(stamina < maxStamina)
-            {
-            stamina += staminaRegenerationRate;
-            }
-            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -141,9 +111,72 @@ public void GainXp(int xpAmount)
         }
     }
 
-    public bool SpendStamina(int amount){
-        if(stamina > amount){
+    private void StopHpRegeneration()
+    {
+        if (hpRegenerationCoroutine != null)
+        {
+            StopCoroutine(hpRegenerationCoroutine);
+            hpRegenerationCoroutine = null;
+        }
+    }
+
+
+    private void StartHpRegeneration()
+    {
+        StopHpRegeneration();
+        hpRegenerationCoroutine = StartCoroutine(HpRegenerationCoroutine());
+    }
+
+    private void StartStaminaRegeneration()
+    {
+        isStaminaRegenerating = false;
+        staminaRegenerationCoroutine = StartCoroutine(StaminaRegenerationCoroutine());
+    }
+
+    private IEnumerator StaminaRegenerationCoroutine()
+    {
+        isStaminaRegenerating = true;
+        float elapsedTime = 0f;
+        while (isStaminaRegenerating)
+        {
+            // Check if it has been 2 seconds since the last spend
+            if (timeSinceLastSpendStamina >= timeBeforeStaminaRegen && stamina < maxStamina)
+            {
+                stamina++;
+            }
+
+            if (stamina >= maxStamina)
+            {
+                // stamina = maxStamina;
+                isStaminaRegenerating = false;
+
+            }
+
+            elapsedTime += Time.deltaTime;
+
+            // Use a loop with a shorter interval for more precise timing
+            while (elapsedTime < staminaRegenWaitTime)
+            {
+                yield return null;
+                elapsedTime += Time.deltaTime;
+            }
+
+            elapsedTime = 0f; // Reset elapsed time
+        }
+    }
+
+    public bool SpendStamina(int amount)
+    {
+        if (stamina - amount >= 0)
+        {
+            timeSinceLastSpendStamina = 0f; // Reset time since last spend stamina
             stamina -= amount;
+
+            if (!isStaminaRegenerating)
+            {
+                StartCoroutine(StaminaRegenerationCoroutine());
+            }
+
             return true;
         }
         return false;

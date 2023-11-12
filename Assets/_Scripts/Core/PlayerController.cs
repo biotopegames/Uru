@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-
-
-
+using UnityEditor.Callbacks;
 
 //using UnityEditor.Callbacks;
 using UnityEngine;
@@ -26,14 +24,22 @@ public class PlayerController : MonoBehaviour
     // public LayerMask groundLayer;
     [SerializeField] private bool isGrounded = false;
 
-    [Header("roll variables")]
+    [Header("Roll variables")]
 
     public float rollForce = 10f;
     public float rollDuration = 1f;
+    [Header("Dash variables")]
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private bool isDashing;
+    [SerializeField] private float dashingPower = 24f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
+    [SerializeField] private TrailRenderer tr;
+
     public float chargeDuration = 1f;
     public Animator anim;
     private Transform playerTransform;
-    private float direction = 1f; // 1 for right, -1 for left
+    [SerializeField] private float facingDirection = 1; // 1 for right, -1 for left
     private Rigidbody2D playerRigidbody;
     private int currentAttack = 1;
     private float lastAttackTime = 0f;
@@ -53,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool hasCompanion = false;
     public PlayerSounds playerSounds;
     public bool isClimbing;
+    private Transform origParentTransform; //when we exit platform set player parent transform back to original one currently "PersistentObjects" 
 
     private void Awake()
     {
@@ -67,9 +74,9 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void Start()
     {
+        origParentTransform = transform.parent;
         shortJumpForce = longJumpForce - 1;
         recoveryCounter = GetComponent<RecoveryCounter>();
         moveSpeed = stats.moveSpeed;
@@ -80,15 +87,12 @@ public class PlayerController : MonoBehaviour
         origAttackCD = recoveryCounter.attackCooldown;
         if (companionGameobject != null)
             companionAI = companionGameobject.GetComponent<Companion>();
-
     }
-
     void Update()
     {
 
-        // isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        // anim.SetBool("isGrounded", isGrounded);
-
+        // TO check framerate
+        // Debug.Log(1 / Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.M))
         {
             HUD.Instance.ShowUI();
@@ -96,14 +100,35 @@ public class PlayerController : MonoBehaviour
 
         if (!frozen)
         {
+
+            if(isDashing)
+            {
+                return;
+            }
+
+            anim.SetBool("isClimbing", isClimbing);
+            anim.SetFloat("moveY", playerRigidbody.velocity.y);
+            float horizontalInput = Input.GetAxis("Horizontal");
+            // Update the direction (flip sprite)
+            if (horizontalInput != 0)
+            {
+                facingDirection = Mathf.Sign(horizontalInput);
+                playerTransform.localScale = new Vector3(facingDirection, 1f, 1f);
+                anim.SetBool("isRunning", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
+
+
             // Check for left mouse click (attack)
             if (Input.GetMouseButtonDown(0) && !isRolling)
             {
-                stats.stamina -= 5;
+                stats.SpendStamina(5);
                 if (!isGrounded)
                 {
                     StartCoroutine(SlowdownYVelocity());
-                    // playerRigidbody.AddForce(new Vector2(0, 5), ForceMode2D.Impulse);
                 }
 
                 float elapsedTime = Time.time - lastAttackTime;
@@ -147,8 +172,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            anim.SetFloat("moveY", playerRigidbody.velocity.y);
-            float horizontalInput = Input.GetAxis("Horizontal");
+
 
             // Get the input for horizontal movement
             if (!isBlocking)
@@ -158,7 +182,6 @@ public class PlayerController : MonoBehaviour
                 playerTransform.position = newPosition;
             }
 
-            anim.SetBool("isClimbing", isClimbing);
 
             if (isClimbing)
             {
@@ -169,17 +192,7 @@ public class PlayerController : MonoBehaviour
                     anim.SetTrigger("climb");
             }
 
-            // Update the direction (flip sprite)
-            if (horizontalInput != 0)
-            {
-                direction = Mathf.Sign(horizontalInput);
-                playerTransform.localScale = new Vector3(direction, 1f, 1f);
-                anim.SetBool("isRunning", true);
-            }
-            else
-            {
-                anim.SetBool("isRunning", false);
-            }
+
 
 
             // Check for Space key (jump)
@@ -187,43 +200,9 @@ public class PlayerController : MonoBehaviour
             {
                 // jumpPressTime = Time.time;
                 anim.SetTrigger("jump");
-                stats.stamina -= 5;
-                // jumpDuration = Time.time - jumpPressTime;
+                stats.SpendStamina(5);
                 playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
-                // playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, shortJumpForce);
-
-                // playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
             }
-
-            // if(Input.GetKeyUp(KeyCode.Space) && !isGrounded)
-            // {
-
-            //     if (jumpDuration < jumpHoldDuration)
-            //     {
-            //         playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 0);
-            //     }
-
-            // }
-
-
-            // Check if the jump button is held.
-            // if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
-            // {
-            //     anim.SetTrigger("jump");
-            //     stats.stamina -= 5;
-            //     jumpPressTime = Time.time;
-            //     float jumpDuration = Time.time - jumpPressTime;
-
-            //     // Apply a higher jump force if the button is held for longer than jumpHoldDuration.
-            //     if (jumpDuration > jumpHoldDuration)
-            //     {
-            //         playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
-            //     }
-            //     else
-            //     {
-            //         playerRigidbody.AddForce(new Vector2(0f, shortJumpForce), ForceMode2D.Impulse);
-            //     }
-            // }
 
 
             if (Input.GetKey(KeyCode.Q))
@@ -279,7 +258,7 @@ public class PlayerController : MonoBehaviour
                     if (companionGameobject != null && companionGameobject.GetComponent<Stats>().health > 0 && hasCompanion)
                     {
 
-                        companionGameobject.transform.position = new Vector2(transform.position.x + (direction * 0.3f), transform.position.y);
+                        companionGameobject.transform.position = new Vector2(transform.position.x + (facingDirection * 0.3f), transform.position.y);
                         anim.SetTrigger("summon");
                         StartCoroutine(SummonCompanion(0.2f));
 
@@ -313,11 +292,18 @@ public class PlayerController : MonoBehaviour
             }
 
 
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+
+
             // Check for Left Control key (roll)
             if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter > 0.4f)
             {
 
-                playerRigidbody.AddForce(new Vector2(direction * rollForce, 0f), ForceMode2D.Impulse);
+                playerRigidbody.AddForce(new Vector2(facingDirection * rollForce, 0f), ForceMode2D.Impulse);
                 anim.SetTrigger("roll");
                 rollEndTime = Time.time + rollDuration;
                 stats.SpendStamina(5);
@@ -355,13 +341,12 @@ public class PlayerController : MonoBehaviour
                     // Set the weight of the "Movement" layer to 0 (inactive).
                     //anim.SetLayerWeight(0, 0.0f);
                     anim.SetTrigger("heavyAttack");
-
+                    stats.SpendStamina(5);
                 }
                 anim.SetBool("isCharging", false);
             }
         }
     }
-
     // Sets the type of ground we are running on in our PlayerSounds script.
     public void SetGroundType()
     {
@@ -376,81 +361,12 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        // Check if player is grounded
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-            anim.SetBool("isGrounded", isGrounded);
-        }
-
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform"))
-        {
-            isGrounded = true;
-            anim.SetBool("isGrounded", isGrounded);
-            playerRigidbody.velocity = Vector2.zero;
-        }
-    }
-
-
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Ladder"))
-        {
-            isClimbing = true;
-            GetComponent<Rigidbody2D>().gravityScale = 0;
-        }
-
-        if (other.CompareTag("Checkpoint"))
-        {
-            respawnPosition = other.transform.position;
-            HUD.Instance.ShowInfoText("Checkpoint reached!");
-        }
-    }
-
-    public void Jump()
-    {
-
-
-    }
-
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Ladder"))
-        {
-            anim.SetBool("isClimbing", false);
-            isClimbing = false;
-            // Restore gravity.
-            GetComponent<Rigidbody2D>().gravityScale = 1.5f;
-        }
-    }
-
-
     IEnumerator SummonCompanion(float wait)
     {
         yield return new WaitForSeconds(wait);
         companionIsOut = true;
         companionGameobject.SetActive(true);
     }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        // Check if player is no longer grounded
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
-            anim.SetBool("isGrounded", isGrounded);
-        }
-    }
-
     IEnumerator SlowdownYVelocity()
     {
         float initialVelocity = playerRigidbody.velocity.y;
@@ -470,5 +386,91 @@ public class PlayerController : MonoBehaviour
         // Time.timeScale = 1;
 
     }
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        // Check if player is grounded
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
+        {
+            isGrounded = true;
+            anim.SetBool("isGrounded", isGrounded);
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            // playerRigidbody.velocity = Vector2.zero;
+            transform.parent = collision.transform;
+            // playerRigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, 0);
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if player is no longer grounded
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+            anim.SetBool("isGrounded", isGrounded);
+        }
+
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            // playerRigidbody.velocity = Vector2.zero;
+            transform.parent = origParentTransform;
+            // playerRigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, 0);
+        }
+    }
+    void OnCollision2D(Collision2D collision)
+    {
+        // if (collision.gameObject.CompareTag("Platform"))
+        // {
+        //     isGrounded = true;
+        //     anim.SetBool("isGrounded", isGrounded);
+        //     // playerRigidbody.velocity = new Vector2(collision.velocity.x, 0);
+        // }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+            GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
+
+        if (other.CompareTag("Checkpoint"))
+        {
+            respawnPosition = other.transform.position;
+            HUD.Instance.ShowInfoText("Checkpoint reached!");
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            anim.SetBool("isClimbing", false);
+            isClimbing = false;
+            // Restore gravity.
+            GetComponent<Rigidbody2D>().gravityScale = 1.5f;
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        
+        canDash = false;
+        isDashing = true;
+        float originalGravity = playerRigidbody.gravityScale;
+        playerRigidbody.gravityScale = 0f;
+// playerRigidbody.AddForce(facingDirection * dashingPower, ForceMode2D.Impulse);
+
+        // playerRigidbody.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        playerRigidbody.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
+
 
 }

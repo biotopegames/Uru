@@ -3727,7 +3727,7 @@ MonoBehaviour:
   choice2Mesh: {fileID: 7056817961520530198}
   nameMesh: {fileID: 7056817962057115755}
   textMesh: {fileID: 7056817962989865384}
-  typeSpeed: 0.0195
+  typeSpeed: 0.0095
 --- !u!82 &7056817961477392871
 AudioSource:
   m_ObjectHideFlags: 0
