@@ -13,62 +13,53 @@ public class Arrow : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, 1f);
+        //  Destroy(this.gameObject, 1f);
 
     }
 
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // Check if the arrow collides with an object tagged "Enemy"
+        if (hitParticlePrefab != null)
+        {
+            Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(hitParticlePrefab, 0.4f);
+        }
+
+
+        // Check if the arrow collides with an object tagged "Player"
         if (other.gameObject.CompareTag("Player"))
         {
-            // Play the hit sound
-            //AudioSource.PlayClipAtPoint(hitSound, transform.position);
             if (!PlayerController.Instance.GetComponent<RecoveryCounter>().recovering)
             {
-                // Spawn the hit particle effect
-                if (hitParticlePrefab != null)
-                {
-                    Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
-                    Destroy(hitParticlePrefab, 0.4f);
-                }
-
                 if (!PlayerController.Instance.isBlocking)
                 {
                     PlayerController.Instance.stats.PlayerTakeDamage(damage);
-                    if(PlayerController.Instance.stats.health <= 0)
+                    if (PlayerController.Instance.stats.health <= 0)
                     {
                         HUD.Instance.ShowDeathMenu();
                     }
                     PlayerController.Instance.GetComponent<RecoveryCounter>().ResetCounter();
                 }
-                else
-                {
-                    rb.AddForce(new Vector2(0, Random.Range(0.09f, 0.2f)), ForceMode2D.Impulse);
-                }
+                // else
+                // {
+                //     rb.AddForce(new Vector2(0, Random.Range(0.09f, 0.2f)), ForceMode2D.Impulse);
+                // }
             }
-            Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject,0.1f);
+
         }
+        if (!other.gameObject.CompareTag("Player"))
+        {
+        Destroy(this.gameObject);
+        }
+
+
     }
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("Player attack") || PlayerController.Instance.isBlocking)
-    //     {
-    //         if (hitParticlePrefab != null)
-    //         {
-    //             Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
-    //             Destroy(hitParticlePrefab, 0.4f);
-    //         }
-    //         rb.AddForce(new Vector2(0, Random.Range(0.09f, 0.2f)), ForceMode2D.Impulse);
-    //     }
-    // }
-
 
 
     public void SetDamage(int a)
-    {
-        damage = a;
+        {
+            damage = a;
     }
 }

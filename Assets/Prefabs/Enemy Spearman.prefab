@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullHealth: 0
-  health: 60
+  health: 6
   damage: 10
   name: 
   stamina: 10
@@ -179,6 +179,10 @@ MonoBehaviour:
   givesXP: 60
   lore: 
   staminaRegenerationRate: 1
+  timeSinceLastSpendStamina: 0
+  timeBeforeStaminaRegen: 2
+  staminaRegenWaitTime: 0.5
+  isStaminaRegenerating: 0
 --- !u!114 &6001826676127021469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryTime: 0.16
-  attackCooldown: 2
+  attackCooldown: 1.5
   attackCounter: 0
   attackRecovering: 0
 --- !u!114 &6001826676127021538

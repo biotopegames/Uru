@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
@@ -16,6 +17,7 @@ public class EnemyBase : MonoBehaviour
     void Start()
     {
         recoveryCounter = GetComponent<RecoveryCounter>();
+        isDead = false;
     }
 
     public void Hurt(int damage, Vector2 attackDirection)

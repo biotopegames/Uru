@@ -115588,6 +115588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 3088637875599358086, guid: f2195bc301193094a9b97ea38472f9a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2195bc301193094a9b97ea38472f9a3, type: 3}
 --- !u!1001 &4114482438447531263

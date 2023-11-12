@@ -241,6 +241,15 @@ public class Enemy : MonoBehaviour
     {
         //hasPerformedFirstAttack = false;
         //Debug.Log("Chasing");
+
+        if (target == null || target.GetComponent<EnemyBase>().isDead)
+        {
+            target = null;
+            targetPositionX = point1;
+            currentState = EnemyState.Patrolling;
+            return;
+        }
+        
         targetPositionX = target.transform.position.x;
         distanceFromTargetX = target.gameObject.transform.position.x - transform.position.x;
         directionSmooth += ((direction * sitStillMultiplier) - directionSmooth) * Time.deltaTime * changeDirectionEase;

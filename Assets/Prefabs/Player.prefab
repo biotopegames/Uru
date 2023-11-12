@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d29517474ae624db60bd4d21924bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 1
+  recoveryTime: 0.31
   attackCooldown: 0.58
   attackCounter: 0
   attackRecovering: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullHealth: 0
   health: 100
-  damage: 7
+  damage: 1
   name: 
   stamina: 40
   maxStamina: 0

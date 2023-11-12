@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullHealth: 0
-  health: 30
+  health: 6
   damage: 5
   name: 
   stamina: 10
@@ -269,6 +269,10 @@ MonoBehaviour:
   givesXP: 20
   lore: 
   staminaRegenerationRate: 1
+  timeSinceLastSpendStamina: 0
+  timeBeforeStaminaRegen: 2
+  staminaRegenWaitTime: 0.5
+  isStaminaRegenerating: 0
 --- !u!114 &9044122621135862872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +711,7 @@ MonoBehaviour:
   audioSource: {fileID: 9044122622384806388}
   particleSystem: {fileID: 7163825342506218138, guid: a80b99f02266d164a9d137402825bfa3, type: 3}
   setBoolInAnimator: {fileID: 0}
+  targetYOffset: 0
 --- !u!82 &9044122622384806388
 AudioSource:
   m_ObjectHideFlags: 0

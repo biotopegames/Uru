@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Callbacks;
+// using UnityEditor.Callbacks;
 
 //using UnityEditor.Callbacks;
 using UnityEngine;
@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+
         origParentTransform = transform.parent;
         shortJumpForce = longJumpForce - 1;
         recoveryCounter = GetComponent<RecoveryCounter>();
