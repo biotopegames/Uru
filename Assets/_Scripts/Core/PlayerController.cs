@@ -103,6 +103,10 @@ public class PlayerController : MonoBehaviour
 
             if(isDashing)
             {
+                if(isGrounded)
+                {
+                    playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 0);
+                }
                 return;
             }
 
@@ -199,6 +203,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
             {
                 // jumpPressTime = Time.time;
+
                 anim.SetTrigger("jump");
                 stats.SpendStamina(5);
                 playerRigidbody.AddForce(new Vector2(0f, longJumpForce), ForceMode2D.Impulse);
@@ -295,6 +300,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && stats.SpendStamina(5))
             {
+                anim.SetTrigger("dash");
                 stats.SpendStamina(5);
                 StartCoroutine(Dash());
             }
@@ -467,9 +473,10 @@ public class PlayerController : MonoBehaviour
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
-        playerRigidbody.velocity = new Vector2(0.3f, 0);
 
         playerRigidbody.gravityScale = originalGravity;
+        playerRigidbody.velocity = new Vector2(facingDirection, 0);
+
         isDashing = false;
 
         yield return new WaitForSeconds(dashingCooldown);
