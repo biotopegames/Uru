@@ -9,6 +9,8 @@ animation events in the animation window.*/
 public class AnimatorFunctions : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource hatchMusic;
+
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Animator setBoolInAnimator;
     [SerializeField] private float targetYOffset;
@@ -43,6 +45,11 @@ public class AnimatorFunctions : MonoBehaviour
         audioSource.PlayOneShot(whichSound);
     }
 
+        void StopSound()
+    {
+        hatchMusic.Stop();
+    }
+
     public void EmitParticles(int amount)
     {
         // if (!particleSystem) return;
@@ -63,6 +70,19 @@ public class AnimatorFunctions : MonoBehaviour
     {
         Time.timeScale = time;
     }
+
+    // public void LoadSceneWithPosition(string sceneName, PlayerPosition position, float playerPosXInNextScene, float playerPosYInNextScene)
+    // {
+    //     position.x = playerPosXInNextScene;
+    //     position.y = playerPosYInNextScene;
+    //     PlayerController.Instance.transform.position = new Vector2(playerPosXInNextScene, playerPosYInNextScene);
+    //     GameManager.Instance.LoadScene(sceneName);
+    // }
+
+    //     public void LoadScene(string sceneName)
+    // {
+    //     GameManager.Instance.LoadScene(sceneName);
+    // }
 
     public void ShootArrow()
     {

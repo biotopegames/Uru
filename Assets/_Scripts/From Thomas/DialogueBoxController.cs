@@ -129,13 +129,16 @@ public class DialogueBoxController : MonoBehaviour
                 {
                     Debug.Log("Submit for Choice1 FOR THE AlterB");
                     //Assign the comanion gameobject or "the hatchling" from the egg to the Player so he can summon it
-                    
+
                     //Item item = Inventory.Instance.inventory["Egg"];
                     //PlayerController.Instance.companionGameobject = item.companionHatchling;
                     //Inventory.Instance.RemoveInventoryItem("Egg");
                     //Inventory.Instance.UpdateSlots();
                     //Set player hasCompanion to true because it determines wether or not he can release the companion
                     PlayerController.Instance.hasCompanion = true;
+                    PlayerController.Instance.TakeOutCompanion();
+                    GameManager.Instance.LoadScene("EggScene");
+
                 }
             }
 

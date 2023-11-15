@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         // TO check framerate
         // Debug.Log(1 / Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             HUD.Instance.ShowUI();
         }
@@ -253,33 +253,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R) && isGrounded && !isRolling)
             {
-                if (companionIsOut && hasCompanion)
-                {
-                    companionGameobject.SetActive(false);
-
-                    companionIsOut = false;
-                }
-                else
-                {
-                    if (companionGameobject != null && companionGameobject.GetComponent<Stats>().health > 0 && hasCompanion)
-                    {
-
-                        companionGameobject.transform.position = new Vector2(transform.position.x + (facingDirection * 0.3f), transform.position.y);
-                        anim.SetTrigger("summon");
-                        StartCoroutine(SummonCompanion(0.2f));
-
-                    }
-
-                    GameObject foundObject = GameObject.Find(companionGameobject.name);
-                    if (foundObject == null && companionGameobject == null)
-                    {
-                        GameObject GO = Instantiate(companionGameobject, new Vector2(transform.position.x - 0.3f, transform.position.y), Quaternion.identity);
-                        companionGameobject = GO;
-                        HUD.Instance.companionStats = companionGameobject.GetComponent<Stats>();
-                        companionIsOut = true;
-                        companionGameobject.SetActive(true);
-                    }
-                }
+                TakeOutCompanion();
             }
 
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.F))
@@ -308,25 +282,24 @@ public class PlayerController : MonoBehaviour
 
 
             // Check for Left Control key (roll)
-            if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter >= 0.21)
-            {
+            // if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded && stats.SpendStamina(5) && !isRolling && recoveryCounter.counter >= 0.21)
+            // {
+            //     playerRigidbody.AddForce(new Vector2(facingDirection * rollForce, 0f), ForceMode2D.Impulse);
+            //     anim.SetTrigger("roll");
+            //     rollEndTime = Time.time + rollDuration;
+            //     stats.SpendStamina(5);
+            //     recoveryCounter.ResetCounter();
+            // }
 
-                playerRigidbody.AddForce(new Vector2(facingDirection * rollForce, 0f), ForceMode2D.Impulse);
-                anim.SetTrigger("roll");
-                rollEndTime = Time.time + rollDuration;
-                stats.SpendStamina(5);
-                recoveryCounter.ResetCounter();
-            }
-
-            if (Time.time >= rollEndTime)
-            {
-                anim.ResetTrigger("roll");
-                isRolling = false;
-            }
-            else
-            {
-                isRolling = true;
-            }
+            // if (Time.time >= rollEndTime)
+            // {
+            //     anim.ResetTrigger("roll");
+            //     isRolling = false;
+            // }
+            // else
+            // {
+            //     isRolling = true;
+            // }
 
             // Check for Right Mouse Button (charge)
             if (Input.GetMouseButtonDown(1))
@@ -457,6 +430,35 @@ public class PlayerController : MonoBehaviour
             isClimbing = false;
             // Restore gravity.
             GetComponent<Rigidbody2D>().gravityScale = 1.5f;
+        }
+    }
+
+    public void TakeOutCompanion()
+    {
+        if (companionIsOut && hasCompanion)
+        {
+            companionGameobject.SetActive(false);
+            companionIsOut = false;
+        }
+        else
+        {
+            if (companionGameobject != null && companionGameobject.GetComponent<Stats>().health > 0 && hasCompanion)
+            {
+
+                companionGameobject.transform.position = new Vector2(transform.position.x + (facingDirection * 0.3f), transform.position.y);
+                anim.SetTrigger("summon");
+                StartCoroutine(SummonCompanion(0.2f));
+            }
+
+            GameObject foundObject = GameObject.Find(companionGameobject.name);
+            if (foundObject == null && companionGameobject == null)
+            {
+                GameObject GO = Instantiate(companionGameobject, new Vector2(transform.position.x - 0.3f, transform.position.y), Quaternion.identity);
+                companionGameobject = GO;
+                HUD.Instance.companionStats = companionGameobject.GetComponent<Stats>();
+                companionIsOut = true;
+                companionGameobject.SetActive(true);
+            }
         }
     }
 

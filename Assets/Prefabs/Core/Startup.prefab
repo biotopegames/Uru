@@ -202,10 +202,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "CONTROLS\n\nPLAYER CONTROLS:\n\n- Attack\t\t\tMouseclick (0)\n- Power
-    attack\t\tHold right-click (1)\n- Jump\t\t\tSpace\n- Roll\t\t\t\tCtrl\n- Dash\t\t\t\tLeft-shift\n-
-    Block\t\t\tQ\n- Menu\t\t\t\tM\n- Info\t\t\t\tI\n- Heal pet\t\t\tP\n- Release
-    pet\t\t\tR\n\nCREATURE COMMANDS:\n\n- Wait\t\t\t\tLeft-shift + w\n- Attack\t\t\tLeft-shift
-    + a\n- Follow\t\t\tLeft-shift + f\n"
+    attack\t\tHold right-click (1)\n- Jump\t\t\tSpace\n- Dash\t\t\t\tCtrl\n- Block\t\t\tQ\n-
+    Menu\t\t\t\tM\n- Info\t\t\t\tI\n- Heal pet\t\t\tP\n- Release pet\t\t\tR\n\nCREATURE
+    COMMANDS:\n\n- Wait\t\t\t\tLeft-shift + w\n- Attack\t\t\tLeft-shift + a\n- Follow\t\t\tLeft-shift
+    + f\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2ea761fcb18b2b42b1ae312595d70ea, type: 2}
   m_sharedMaterial: {fileID: -6165120084595264252, guid: f2ea761fcb18b2b42b1ae312595d70ea, type: 2}
