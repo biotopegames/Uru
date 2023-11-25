@@ -2,6 +2,51 @@
 new idea after the egg is hatched a gate should appear so u can enter the castle . 
 
 
+0.54
+
+
+
+What is the trinity hook of the game?
+
+
+story hook - a lost tribe: a tribe that was the protectors of the realm has almost been vanquished you have to find these protectors scattered around the map
+and they willl slowly populate your city to replenish the tribe. URU is the name of the Chieftan summoner of the tribe. 
+
+
+mechanical hook - metroidvania but with monster taming
+
+music and visual hook - tribal music, synth, flute, marimba, piano, guitar etc.
+ visual hook natural less saturated colors/ Grim. 
+
+
+
+
+For centuries the tribe of Zaku valley had lived in peace and harmony with all the creatures of the land. Being at peace with their surroundings.
+
+The Zaku tribe was the protector of the realm and had ancient knowledge allowing them to summon Guardian Creatures.
+
+However, the summoner taruk did not see the beauty in the way of living and was seeking to exploit the power. So he was cast out from the tribe.
+
+On the special day announcing the new chieftan summoner called URU, Taruk led an unsuspected attack and destroyed the entire tribe.
+Or so he thought...
+
+
+
+
+
+
+
+
+
+NEW GAME IDEA: 
+
+3D game walk through dungeon levels castle several levels 
+walk freely but when you encounter enemies you walk based of your walk dice + grid movement + you have theese cards and abilities etc you can use
+press space to end turn 
+should be prompted if you try to enter door: "you can hear some strange noises through the door, are you sure you want to enter?" 
+and in some cases there are enemies other times bosses or nice treassure. 
+
+clear through all the levels to final boss before moving on to new stages.
 
 
 

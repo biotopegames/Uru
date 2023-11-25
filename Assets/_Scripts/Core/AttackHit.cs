@@ -49,6 +49,7 @@ void OnTriggerStay2D(Collider2D col)
 
     if (attacksWhat == AttacksWhat.PlayerController && (player != null || (companion != null && GetComponentInParent<PlayerController>() == null)))
     {
+
         if (parent.transform.position.x < col.transform.position.x)
         {
             targetSide.x = 1;

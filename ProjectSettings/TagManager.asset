@@ -29,8 +29,8 @@ TagManager:
   - IgnorePlayer
   - EnemyProjectiles
   - Blur1
-  - 
-  - 
+  - Post Processing
+  - No post process
   - 
   - 
   - 
@@ -52,9 +52,15 @@ TagManager:
   - name: Background
     uniqueID: 4134640707
     locked: 0
+  - name: mid background
+    uniqueID: 1080387113
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Interactable
     uniqueID: 1171740075
+    locked: 0
+  - name: Frontground
+    uniqueID: 2064346409
     locked: 0

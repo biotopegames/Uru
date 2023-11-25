@@ -36,7 +36,9 @@ public class Dialogue : MonoBehaviour
         //NPC
         dialogue.Add("SignA", new string[] {
             "They DESTROYED everything... there's no guardian creatures to defend us anymore.",
-            "If you can get me the 3 bug totems i might be able to summon one more."
+            "I wonder if anybody else survived...",
+            "We have to be prepared, if they find us here",
+            "This will take my last strength, but If you can get me the 3 totems i might be able to summon one more."
         });
 
         //NPC

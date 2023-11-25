@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 2966654000000000
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -806,8 +806,8 @@ MonoBehaviour:
   dirtSound: {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
   hurtSound: {fileID: 8300000, guid: 261144658f936474993f6a5ce2e5577c, type: 3}
   hurtSounds: []
-  jumpSound: {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
-  landSound: {fileID: 8300000, guid: 4140fc16eba7d4f34ae482b1ad9d4c52, type: 3}
+  jumpSound: {fileID: 8300000, guid: b2fd12bcf73cc0d4f9c169c8efed3156, type: 3}
+  landSound: {fileID: 8300000, guid: 309876bca0863154589a5685ec7511db, type: 3}
   attackSound: {fileID: 8300000, guid: 21371e21f90ac4053813b9192c9619aa, type: 3}
   bigAttackSound: {fileID: 8300000, guid: 3ecddeba74bbf441c8620f906659ecff, type: 3}
   bigAttackSlamSound: {fileID: 0}
@@ -827,6 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 544846233736216593}
+  hatchMusic: {fileID: 0}
   particleSystem: {fileID: 0}
   setBoolInAnimator: {fileID: 0}
   targetYOffset: 0

@@ -22,6 +22,7 @@ public class PlayerSounds : MonoBehaviour
     [System.NonSerialized] public int whichHurtSound;
     [SerializeField] private AudioSource audioSource;
     [System.NonSerialized] public string groundType = "grass";
+    private float originalVolume;
 
 
 
@@ -41,7 +42,7 @@ public class PlayerSounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -49,41 +50,53 @@ public class PlayerSounds : MonoBehaviour
     {
         //As long as the player as activated the pound in ActivatePound, the following will occur when hitting the ground.
 
-            // animator.ResetTrigger("attack");
-            // velocity.y = jumpPower / 1.4f;
-            // animator.SetBool("pounded", true);
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(attackSound, 0.4f);
-            // cameraEffects.Shake(200, 1f);
-            // pounding = false;
-            // recoveryCounter.counter = 0;
-            // animator.SetBool("pounded", true);
+        // animator.ResetTrigger("attack");
+        // velocity.y = jumpPower / 1.4f;
+        // animator.SetBool("pounded", true);
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(attackSound, 0.4f);
+        // cameraEffects.Shake(200, 1f);
+        // pounding = false;
+        // recoveryCounter.counter = 0;
+        // animator.SetBool("pounded", true);
     }
 
     public void BigAttackSound()
     {
-            audioSource.PlayOneShot(bigAttackSound);
+        audioSource.PlayOneShot(bigAttackSound);
 
     }
 
     public void PlayHurtSound()
     {
-            audioSource.PlayOneShot(hurtSound);
+        audioSource.PlayOneShot(hurtSound);
 
     }
 
 
-        public void PlayStepSound()
+    public void PlayStepSound()
     {
         //Play a step sound at a random pitch between two floats, while also increasing the volume based on the Horizontal axis
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         //audioSource.PlayOneShot(stepSound, Mathf.Abs(Input.GetAxis("Horizontal") / 5));
         audioSource.PlayOneShot(stepSound, 1.4f);
+    }
+
+    public void PlayLandSound()
+    {
+        //Play a step sound at a random pitch between two floats, while also increasing the volume based on the Horizontal axis
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.volume += 0.5f;
+        //audioSource.PlayOneShot(stepSound, Mathf.Abs(Input.GetAxis("Horizontal") / 5));
+        audioSource.PlayOneShot(landSound, 2f);
+                audioSource.volume -= 0.5f;
+
 
     }
 
-        public void PlayJumpSound()
+    public void PlayJumpSound()
     {
+
         // audioSource.pitch = (Random.Range(1f, 1f));
         audioSource.PlayOneShot(jumpSound, 1.4f);
 

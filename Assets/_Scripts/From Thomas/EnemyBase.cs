@@ -50,17 +50,20 @@ public class EnemyBase : MonoBehaviour
         }
         else if (gameObject.TryGetComponent(out PlayerController player))
         {
+            if(!recoveryCounter.recovering)
+            {
             // Apply knockback to the player
             Rigidbody2D playerRigidbody = player.GetComponent<Rigidbody2D>();
             playerRigidbody?.AddForce(new Vector2(attackDirection.x * knockbackForce, 1), ForceMode2D.Impulse);
             player.playerSounds.PlayHurtSound();
+            recoveryCounter.ResetCounter();
+            }
 
             if (player.stats.health > 0 && !PlayerController.Instance.isBlocking)
             {
                 player.stats.health -= damage;
                 // HUD.Instance.UpdatePlayerHealth(player.stats.health - damage);
                 player.anim.SetTrigger("hurt");
-                recoveryCounter.ResetCounter();
                 if (player.stats.health <= 0)
                 {
                     player.stats.health = 0;

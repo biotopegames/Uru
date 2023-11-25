@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-
         origParentTransform = transform.parent;
         shortJumpForce = longJumpForce - 1;
         recoveryCounter = GetComponent<RecoveryCounter>();
@@ -101,10 +100,9 @@ public class PlayerController : MonoBehaviour
 
         if (!frozen)
         {
-
-            if(isDashing)
+            if (isDashing)
             {
-                if(isGrounded)
+                if (isGrounded)
                 {
                     playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 0);
                 }
@@ -125,7 +123,6 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("isRunning", false);
             }
-
 
             // Check for left mouse click (attack)
             if (Input.GetMouseButtonDown(0) && !isRolling)
@@ -177,8 +174,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
-
             // Get the input for horizontal movement
             if (!isBlocking)
             {            // Calculate the new position
@@ -186,7 +181,6 @@ public class PlayerController : MonoBehaviour
                 // Update the position using Transform
                 playerTransform.position = newPosition;
             }
-
 
             if (isClimbing)
             {
@@ -196,9 +190,6 @@ public class PlayerController : MonoBehaviour
                 if (verticalInput == 0)
                     anim.SetTrigger("climb");
             }
-
-
-
 
             // Check for Space key (jump)
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
@@ -378,9 +369,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Platform"))
         {
-            // playerRigidbody.velocity = Vector2.zero;
+            //So that the player stays on the platform
             transform.parent = collision.transform;
-            // playerRigidbody.velocity = new Vector2(collision.gameObject.GetComponent<Rigidbody2D>().velocity.x, 0);
         }
     }
     void OnCollisionExit2D(Collision2D collision)
@@ -432,7 +422,6 @@ public class PlayerController : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 1.5f;
         }
     }
-
     public void TakeOutCompanion()
     {
         if (companionIsOut && hasCompanion)
@@ -461,7 +450,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     private IEnumerator Dash()
     {
         isBlocking = true;
@@ -470,7 +458,6 @@ public class PlayerController : MonoBehaviour
         float originalGravity = playerRigidbody.gravityScale;
         playerRigidbody.gravityScale = 0f;
         // playerRigidbody.AddForce(new Vector2((int)(facingDirection * dashingPower), 0), ForceMode2D.Impulse);
-
 
         playerRigidbody.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
@@ -484,6 +471,4 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
-
-
 }
