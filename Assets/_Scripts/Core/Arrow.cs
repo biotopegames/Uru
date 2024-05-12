@@ -23,7 +23,7 @@ public class Arrow : MonoBehaviour
         if (hitParticlePrefab != null)
         {
             Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
-            Destroy(hitParticlePrefab, 0.4f);
+            DestroyImmediate(hitParticlePrefab, true);
         }
 
 
